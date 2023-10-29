@@ -1,0 +1,90 @@
+<!DOCTYPE html5>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>EA2 - 2D Geometrie aus Linien</title>
+    <meta name="description" content="Hier finden Sie eine 2D Geometrie aus Linien in Form eines Totenkopfes.">  
+    <link rel="stylesheet" href="../styles.css" media="screen">
+    <script src="../EA1_IA_Scheibe.js"></script>
+</head>
+
+<body>
+    <nav id="nav-main">  
+        <ul>    
+            <li><a href="../index.html">Home</a></li>    
+            <li><a href="ea1.html">EA1</a></li>    
+            <li><a href="ea2.html">EA2</a></li>
+            <li><a href="ea3.html">EA3</a></li>    
+            <li><a href="ea4.html">EA4</a></li>
+            <li><a href="ea5.html">EA5</a></li>    
+            <li><a href="ea6.html">EA6</a></li>
+            <li><a href="ea7.html">EA7</a></li>    
+            <li><a href="ea8.html">EA8</a></li>
+            <li><a href="ea9.html">EA9</a></li>    
+            <li><a href="ea10.html">EA10</a></li>
+            <li><h3>MONA BIESDORF</h3></li>
+        </ul>
+    </nav>
+
+    <h1>2D Geometrie aus Linien</h1>
+    <h2>Passend zu Halloween</h2>
+    
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+        <script>
+            // Get the WebGL context
+            var canvas = document.getElementById('canvas');
+            var gl = canvas.getContext('experimental-webgl');
+
+            // Pipeline setup
+            gl.clearColor(1, 1, 1, 1);
+
+            // Compile a vertex shader
+            var vsSource = 'attribute vec2 pos;'+
+            'void main(){ gl_Position = vec4(pos * 0.05 - 0.75, 0, 1);}';
+            var vs = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vs, vsSource);
+            gl.compileShader(vs);
+
+            // Compile a fragment shader
+            fsSouce =  'void main() { gl_FragColor = vec4(0, 0, 0, 1);}';
+            var fs = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fs, fsSouce);
+            gl.compileShader(fs);
+
+            // Link together into a program
+            var prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
+            gl.useProgram(prog);
+
+            // Load vertex data into a buffer
+            var vertices = new Float32Array(
+                [4,18, 4,20, 7,21, 11,20, 10,13, 11,13, 12,17, 13,13, 12,13, 11,18, 
+                9,16, 4,16, 3,18, 4,14, 2,14, 1,16, 3,19, 2,24, 1,18, 1,24, 
+                8,30, 15,30, 21,24, 19,18, 17,16, 13,17, 12,20, 18,21, 19,15, 21,21, 
+                21,15, 16,11, 15,7, 15,9, 14,9, 13,8, 12.5,9, 12,8, 11,9, 11,8, 
+                10,8, 9,9, 9,8, 8,8, 7,12, 6,9, 7,6, 6,12, 3,13, 7,2, 
+                12,1, 17,3, 18,8, 18,12, 17,6, 20,13,
+                
+                ]);
+            var vbo = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+            // Bind vertex buffer to attribute variable
+            var posAttrib = gl.getAttribLocation(prog, 'pos');
+            gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
+            gl.enableVertexAttribArray(posAttrib);
+
+            // Clear framebuffer and render primitives
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.drawArrays(gl.LINE_STRIP, 0, 56);
+        </script>
+
+</body>
+<footer>
+    <!-- <h3>Sources</h3> -->
+</footer>
+</html>

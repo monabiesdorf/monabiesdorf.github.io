@@ -1,0 +1,116 @@
+body {
+    margin: 25px;
+    padding: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:black;
+    background-color:white;
+}   
+    
+h1 {
+    padding: 30px;
+}
+h2 {
+    padding-left: 30px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+/*_____________________NAVIGATION______________________*/
+nav {
+    background-color: #1d1d1d;
+    
+}
+
+nav:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+nav ul {
+    list-style: none;
+    position: relative;
+    color: white; 
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 40px;
+    margin-top: 5px;
+    padding-top: 2px;
+}
+    
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;   
+    font-size: 25px;
+    font-variant-caps:all-small-caps;
+    font-weight: 100;
+    line-height: 50px;
+}
+
+/*____INTERAKTIONSSTATI_NAV_____*/
+
+nav ul li a:link {
+    color: #ffffff;
+}
+
+nav ul li a:visited {
+    color: #ffffff;
+}
+
+nav ul li a:hover {
+    color: gray;
+}
+
+nav ul li h3 {
+    position: fixed;
+    right: 100px;
+    top: 40px;
+}
+
+/*_____________________EA1______________________*/
+
+.containerScheibe {
+    margin: 50px;
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    background: url(images/SpriteSheet_Scheibe.png);
+    animation: moveSpriteSheet 2s steps(24) infinite; 
+  }
+
+
+@keyframes moveSpriteSheet {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position:-12000 0;
+    }
+  }
+  
+
+  .containerSloth {
+
+    margin: 0 50 50 50px;
+    width: 233px;
+    height: 310px;
+    overflow: hidden;
+    background: url(images/SpriteSheet_Sloth.png);
+    animation: moveSpriteSloth 1.5s steps(15) infinite;
+  }
+
+  @keyframes moveSpriteSloth {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position:  -3495 0;
+    }
+  }
+
+
